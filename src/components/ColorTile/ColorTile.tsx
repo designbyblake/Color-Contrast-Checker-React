@@ -11,6 +11,7 @@ export const ColorTile = ({ hexString, rgbArray }: ColorTileProps) => {
     return displayRGB(rgbArray);
   }, [rgbArray]);
 
+  const dave = 'dave';
   return (
     <div className={styles.root} data-element='color-tile'>
       <div style={{ backgroundColor: color }} className={styles.block} />

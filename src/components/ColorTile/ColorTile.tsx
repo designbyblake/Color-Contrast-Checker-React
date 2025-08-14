@@ -3,6 +3,7 @@ import { useMemo } from 'react';
 import { displayRGB } from '../../utilities/colors';
 import styles from './ColorTile.module.scss';
 
+// lint-testing
 export const ColorTile = ({ hexString, rgbArray }: ColorTileProps) => {
   const color = `#${hexString}`;
   const rgb = useMemo(() => {

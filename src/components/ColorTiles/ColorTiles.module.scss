@@ -1,0 +1,8 @@
+.colors {
+  display: flex;
+  flex-wrap: wrap;
+
+  [data-element='color-form'] {
+    flex: 0 1 170px;
+  }
+}

@@ -1,0 +1,16 @@
+// Convert pixels to relative lineheight
+// Assumes $em-base is the font-size of <html>
+
+@use 'sass:math';
+
+@function line-height($pxval, $fontsize) {
+  @if not math.is-unitless($pxval) {
+    $pxval: strip-units($pxval);
+  }
+
+  @if not math.is-unitless($fontsize) {
+    $fontsize: strip-units($fontsize);
+  }
+
+  @return ($pxval / $fontsize);
+}

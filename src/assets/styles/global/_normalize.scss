@@ -1,0 +1,182 @@
+// based on https://github.com/necolas/normalize.css/blob/master/normalize.css
+html {
+  line-height: 1.15;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+main {
+  display: block;
+  position: relative;
+}
+
+hr {
+  background-color: var(--brand-secondary, #323264);
+  border: none;
+  height: 1px;
+  opacity: 0.16;
+}
+
+pre {
+  font-family: monospace;
+  font-size: 1em;
+}
+
+b,
+strong {
+  font-weight: 700;
+}
+
+code,
+kbd,
+samp {
+  font-family: monospace;
+  font-size: 1em;
+}
+
+small {
+  font-size: 80%;
+}
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+img {
+  border-style: none;
+  height: auto;
+  max-width: 100%;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+
+  &[disabled] {
+    cursor: default;
+  }
+}
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  appearance: auto;
+}
+
+button,
+a {
+  -webkit-touch-callout: none;
+  user-select: none;
+}
+
+figure {
+  margin: 0;
+}
+
+fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
+
+legend {
+  box-sizing: border-box;
+  color: inherit;
+  display: table;
+  max-width: 100%;
+  padding: 0;
+  white-space: normal;
+}
+
+progress {
+  vertical-align: baseline;
+}
+
+textarea {
+  overflow: auto;
+}
+
+[type='checkbox'],
+[type='radio'] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+[type='number']::-webkit-inner-spin-button,
+[type='number']::-webkit-outer-spin-button {
+  height: auto;
+}
+
+details {
+  display: block;
+}
+
+summary {
+  display: list-item;
+}
+
+template {
+  display: none;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li {
+  margin-block: 1rem;
+}
+
+h1:focus-visible {
+  outline: none;
+}
+
+h3 {
+  font-size: em(21);
+  line-height: em(28);
+}
+
+h5 {
+  font-size: em(16);
+  line-height: em(20, 16);
+}
+
+dl,
+dd,
+dt {
+  margin: 0;
+  padding: 0;
+}
+
+svg,
+[aria-hidden='true'] {
+  pointer-events: none;
+}

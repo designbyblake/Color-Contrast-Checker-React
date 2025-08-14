@@ -1,0 +1,9 @@
+@use '../mixins/a11y';
+
+.a11y {
+  @include a11y.a11y;
+}
+
+.sr {
+  @include a11y.sr;
+}

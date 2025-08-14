@@ -1,0 +1,22 @@
+$size: 150px;
+$border-width: 10px;
+
+.root {
+  border: $border-width solid #fff;
+  box-shadow: 0 0 7px 2px rgb(101 38 38 / 40%);
+  margin-bottom: 20px;
+  max-width: #{$size + ($border-width * 2)};
+}
+
+.block {
+  background-color: #ccc;
+  height: $size;
+  width: $size;
+}
+
+.label {
+  display: block;
+  font-weight: bold;
+  margin: 0;
+  padding: 5px 0 10px;
+}

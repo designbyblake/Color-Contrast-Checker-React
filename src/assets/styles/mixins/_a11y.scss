@@ -1,0 +1,77 @@
+@mixin a11y() {
+  border: 0;
+  bottom: 0;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+
+  &--focusable {
+    &:focus,
+    &:active {
+      clip: auto;
+      clip-path: none;
+      height: auto;
+      overflow: visible;
+      position: static;
+      white-space: normal;
+      width: auto;
+    }
+  }
+}
+
+@mixin a11y-show() {
+  clip: auto;
+  clip-path: none;
+  height: auto;
+  overflow: visible;
+  position: static;
+  white-space: normal;
+  width: auto;
+}
+
+@mixin sr() {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+
+  &:focus,
+  &:active {
+    clip: auto !important;
+    clip-path: none !important;
+    height: auto !important;
+    margin: auto !important;
+    overflow: visible !important;
+    white-space: normal !important;
+    width: auto !important;
+  }
+}
+
+@mixin sr-only {
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  top: rem(-64);
+  width: 1px;
+}
+
+@mixin visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  display: block;
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}

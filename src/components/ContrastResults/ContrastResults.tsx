@@ -1,9 +1,9 @@
 import { type TColors } from '../../types/Colors';
-import { useContrast } from './useContrast';
-import { Contrast } from '../Contrast/Contrast';
-import { ColorTile } from '../ColorTile/ColorTile';
-import styles from './ContrastResults.module.scss';
 import { convertRGBtoHex, darkenRGB } from '../../utilities/colors';
+import { ColorTile } from '../ColorTile/ColorTile';
+import { Contrast } from '../Contrast/Contrast';
+import styles from './ContrastResults.module.scss';
+import { useContrast } from './useContrast';
 
 export const ContrastResults = ({ colors }: TContrastResults) => {
   const { contrastRatio } = useContrast(colors);

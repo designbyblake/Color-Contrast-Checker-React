@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
-import { contrast } from '../../utilities/colors';
+import { useEffect,useState } from 'react';
+
 import { type TColors } from '../../types/Colors';
+import { contrast } from '../../utilities/colors';
 
 export const useContrast = (colorsArr: TColors[]) => {
   const [contrastRatio, setContrastRatio] = useState<TContrastResults[]>();

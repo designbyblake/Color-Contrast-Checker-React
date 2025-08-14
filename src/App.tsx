@@ -1,11 +1,11 @@
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef,useState } from 'react';
 
 import styles from './App.module.scss';
 import { ColorsForm } from './components/ColorsForm/ColorsForm';
 import { ColorTiles } from './components/ColorTiles/ColorTiles';
-import { Color } from './utilities/colors';
 import { ContrastResults } from './components/ContrastResults/ContrastResults';
 import { type TColors } from './types/Colors';
+import { Color } from './utilities/colors';
 
 export const App = () => {
   const [colors, setColors] = useState<TColors[]>([

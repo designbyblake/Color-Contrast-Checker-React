@@ -1,10 +1,10 @@
 import {
-  ChangeEvent,
-  InputHTMLAttributes,
   AriaAttributes,
-  ReactElement,
-  forwardRef
-} from 'react';
+  ChangeEvent,
+  forwardRef,
+  InputHTMLAttributes,
+  ReactElement} from 'react';
+
 import styles from './TextInput.module.scss';
 
 export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(

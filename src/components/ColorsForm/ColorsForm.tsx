@@ -1,13 +1,14 @@
-import { useState, forwardRef } from 'react';
-import { TextInput } from '../TextInput/TextInput';
-import { ColorTile } from '../ColorTile/ColorTile';
+import { useState } from 'react';
+
 import { HEXCHARACTERS } from '../../constants/hexcharacters';
+import { type TColorsForm } from '../../types/Colors';
+import { ColorTile } from '../ColorTile/ColorTile';
+import { TextInput } from '../TextInput/TextInput';
 import styles from './ColorsForm.module.scss';
 
-export const ColorsForm = forwardRef<HTMLInputElement, IColorsForm>(
+export const ColorsForm =
   (
-    { hexString, rgbArray, index, removeColor, updateColor }: IColorsForm,
-    ref
+    { hexString, rgbArray, index,ref, removeColor, updateColor }: TColorsForm
   ) => {
     const [color, setColor] = useState<string>(hexString);
 
@@ -49,14 +50,3 @@ export const ColorsForm = forwardRef<HTMLInputElement, IColorsForm>(
       </div>
     );
   }
-);
-
-ColorsForm.displayName = 'ColorsForm';
-
-interface IColorsForm {
-  hexString: string;
-  rgbArray: number[];
-  index: number;
-  removeColor(index: number): void;
-  updateColor(index: number, color: string): void;
-}

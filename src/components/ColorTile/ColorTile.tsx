@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
-import styles from './ColorTile.module.scss';
+
 import { displayRGB } from '../../utilities/colors';
+import styles from './ColorTile.module.scss';
 
 export const ColorTile = ({ hexString, rgbArray }: ColorTileProps) => {
   const color = `#${hexString}`;

@@ -1,20 +1,19 @@
 /** @type {import('stylelint').Config} */
 export default {
-    "extends": ["stylelint-config-standard-scss", "stylelint-config-prettier"],
-    "plugins": ["stylelint-scss", "stylelint-order", "stylelint-prettier"],
-    "rules": {
-        "prettier/prettier": true,
-        "property-no-vendor-prefix": null,
+    extends: ["stylelint-config-standard-scss"],
+    plugins: ["stylelint-scss", "stylelint-order", "stylelint-prettier"],
+    rules: {
+        "alpha-value-notation": "percentage",
         "at-rule-no-unknown": null,
-        "color-hex-length": "long",
-        "declaration-colon-newline-after": null,
+        "color-function-notation": "modern",
+        "color-hex-length": "short",
         "font-family-name-quotes": null,
         "max-nesting-depth": 4,
+        "no-descending-specificity": null,
         "order/properties-alphabetical-order": true,
+        "prettier/prettier": true,
+        "property-no-vendor-prefix": null,
         "scss/at-mixin-pattern": null,
-        "color-function-notation": "legacy",
-        "alpha-value-notation": "number",
-        "value-keyword-case": null,
         "scss/double-slash-comment-whitespace-inside": null,
         "selector-pseudo-class-no-unknown": [
             true,
@@ -22,9 +21,9 @@ export default {
                 "ignorePseudoClasses": ["global"]
             }
         ],
-        "no-descending-specificity": null
+        "value-keyword-case": null
     },
-    "ignoreFiles": [
+    ignoreFiles: [
         "src/stories/**/*.css",
         "dist/**/*",
         "coverage/**",

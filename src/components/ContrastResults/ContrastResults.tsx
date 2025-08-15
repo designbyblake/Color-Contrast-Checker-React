@@ -20,7 +20,7 @@ export const ContrastResults = ({ colors }: TContrastResults) => {
 
         return (
           <div className={styles.root} key={`${ratio.color1} ${ratio.color2}`}>
-            <h2>Contrast Ratio: {ratio.contrast}:1</h2>
+            <h2>Contrast Ratio:{ratio.contrast}:1</h2>
             <div className={styles['color-tiles']}>
               <ColorTile hexString={ratio.color1} rgbArray={ratio.color1rgb} />
               <ColorTile hexString={ratio.color2} rgbArray={ratio.color2rgb} />

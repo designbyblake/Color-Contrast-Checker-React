@@ -1,4 +1,4 @@
-import { useEffect,useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { type TColors } from '../../types/Colors';
 import { contrast } from '../../utilities/colors';

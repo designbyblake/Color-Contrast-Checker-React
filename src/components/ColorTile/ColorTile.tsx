@@ -3,15 +3,19 @@ import { useMemo } from 'react';
 import { displayRGB } from '../../utilities/colors';
 import styles from './ColorTile.module.scss';
 
-// lint-testing
-// Did this work?
+
 export const ColorTile = ({ hexString, rgbArray }: ColorTileProps) => {
   const color = `#${hexString}`;
   const rgb = useMemo(() => {
     return displayRGB(rgbArray);
   }, [rgbArray]);
 
-  const dave = 'dave';
+
+
+
+
+
+
   return (
     <div className={styles.root} data-element='color-tile'>
       <div style={{ backgroundColor: color }} className={styles.block} />

@@ -1,75 +1,76 @@
 {
-    "name": "color-contrast-checker",
-    "private": true,
-    "version": "0.0.0",
-    "type": "module",
-    "scripts": {
-        "dev": "vite",
-        "build": "tsc -b && vite build",
-        "lint": "eslint . \"**/*.{ts,tsx,js}\"",
-        "lint:fix": "eslint \"**/*.{ts,tsx,js}\" --fix",
-        "lint-styles": "npx stylelint \"**/*.{css,scss}\"",
-        "lint-styles:fix": "stylelint --fix './src/**/*.{css,scss}'",
-        "preview": "vite preview",
-        "prepare": "husky"
-    },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
-    },
-    "lint-staged": {
-        "*.{ts, js, tsx, jsx, json}": [
-            "npm run lint:fix"
-        ],
-        "*.{css, scss}": [
-            "npm run lint-styles:fix"
-        ]
-    },
-    "dependencies": {
-        "react": "^19.1.1",
-        "react-dom": "^19.1.1"
-    },
-    "devDependencies": {
-        "@eslint/js": "^9.33.0",
-        "@types/react": "^19.1.10",
-        "@types/react-dom": "^19.1.7",
-        "@typescript-eslint/eslint-plugin": "^8.39.1",
-        "@vitejs/plugin-react": "^5.0.0",
-        "eslint": "^9.33.0",
-        "eslint-config-prettier": "^10.1.8",
-        "eslint-import-resolver-node": "^0.3.9",
-        "eslint-plugin-import": "^2.32.0",
-        "eslint-plugin-json": "^4.0.1",
-        "eslint-plugin-jsx-ally": "^6.0.3",
-        "eslint-plugin-prettier": "^5.5.4",
-        "eslint-plugin-react": "^7.37.5",
-        "eslint-plugin-react-hooks": "^5.2.0",
-        "eslint-plugin-react-refresh": "^0.4.20",
-        "eslint-plugin-simple-import-sort": "^12.1.1",
-        "eslint-plugin-storybook": "^9.1.2",
-        "eslint-plugin-testing-library": "^7.6.6",
-        "globals": "^16.3.0",
-        "husky": "^9.1.7",
-        "lint-staged": "^16.1.5",
-        "prettier": "^3.6.2",
-        "prettier-eslint": "^16.4.2",
-        "sass-embedded": "^1.90.0",
-        "stylelint": "^16.23.1",
-        "stylelint-config-standard": "^39.0.0",
-        "stylelint-config-standard-scss": "^15.0.1",
-        "stylelint-order": "^7.0.0",
-        "stylelint-prettier": "^5.0.3",
-        "stylelint-scss": "^6.12.1",
-        "typescript": "~5.8.3",
-        "typescript-eslint": "^8.39.1",
-        "vite": "^7.1.2"
-    }
+  "name": "color-contrast-checker",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint . \"**/*.{ts,tsx,js}\"",
+    "lint:fix": "eslint \"**/*.{ts,tsx,js}\" --fix",
+    "lint-styles": "npx stylelint \"**/*.{css,scss}\"",
+    "lint-styles:fix": "stylelint --fix './src/**/*.{css,scss}'",
+    "preview": "vite preview",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.33.0",
+    "@stylistic/eslint-plugin": "^5.2.3",
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.7",
+    "@typescript-eslint/eslint-plugin": "^8.39.1",
+    "@vitejs/plugin-react": "^5.0.0",
+    "eslint": "^9.33.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-import-resolver-node": "^0.3.9",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-json": "^4.0.1",
+    "eslint-plugin-jsx-ally": "^6.0.3",
+    "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "eslint-plugin-storybook": "^9.1.2",
+    "eslint-plugin-testing-library": "^7.6.6",
+    "globals": "^16.3.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.5",
+    "prettier": "^3.6.2",
+    "prettier-eslint": "^16.4.2",
+    "sass-embedded": "^1.90.0",
+    "stylelint": "^16.23.1",
+    "stylelint-config-standard": "^39.0.0",
+    "stylelint-config-standard-scss": "^15.0.1",
+    "stylelint-order": "^7.0.0",
+    "stylelint-prettier": "^5.0.3",
+    "stylelint-scss": "^6.12.1",
+    "typescript": "~5.8.3",
+    "typescript-eslint": "^8.39.1",
+    "vite": "^7.1.2"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "lint-staged": {
+    "*.{ts,js,tsx,jsx,json}": [
+      "npm run lint:fix"
+    ],
+    "*.{css,scss}": [
+      "npm run lint-styles:fix"
+    ]
+  }
 }

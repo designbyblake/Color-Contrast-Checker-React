@@ -1,14 +1,12 @@
 import {
-  AriaAttributes,
-  ChangeEvent,
-  forwardRef,
-  InputHTMLAttributes,
-  ReactElement} from 'react';
+  type AriaAttributes,
+  type ChangeEvent,
+  type InputHTMLAttributes,
+  type Ref} from 'react';
 
 import styles from './TextInput.module.scss';
 
-export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
-  ({ label, error, onChange, ...props }: TextInputProps, ref): ReactElement => {
+export const TextInput = ({ label, error, onChange, ref, ...props }: TextInputProps) => {
     return (
       <div className={styles.root}>
         <label>
@@ -25,16 +23,13 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
       </div>
     );
   }
-);
-TextInput.displayName = 'TextInput';
+
 
 interface TextInputProps
   extends AriaAttributes,
     InputHTMLAttributes<HTMLInputElement> {
   label: string;
   error?: string | boolean | undefined;
-  /**
-   * onChange callback
-   */
+  ref: Ref<HTMLInputElement | null> | undefined
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 }

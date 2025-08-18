@@ -4,9 +4,11 @@ import styles from './ColorTiles.module.scss';
 
 export const ColorTiles = ({
   children,
-
   addColor
-}: IColorTiles) => {
+}: {
+    children: ReactNode | ReactNode[];
+    addColor(): void;
+}) => {
   return (
     <div className={styles.root}>
       <div className={styles.colors}>{children}</div>
@@ -19,7 +21,3 @@ export const ColorTiles = ({
   );
 };
 
-interface IColorTiles {
-  children: ReactNode | ReactNode[];
-  addColor(): void;
-}

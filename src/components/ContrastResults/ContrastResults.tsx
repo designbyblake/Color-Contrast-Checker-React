@@ -1,13 +1,16 @@
-import { type TColors } from '../../types/Colors';
-import { convertRGBtoHex, darkenRGB } from '../../utilities/colors';
-import { ColorTile } from '../ColorTile/ColorTile';
-import { Contrast } from '../Contrast/Contrast';
+import { ColorTile } from 'src/components/ColorTile/ColorTile';
+import { Contrast } from 'src/components/Contrast/Contrast';
+import { type TColors } from 'src/types/Colors';
+import { convertRGBtoHex, darkenRGB } from 'src/utilities/colors';
+
 import styles from './ContrastResults.module.scss';
 import { useContrast } from './useContrast';
 
-export const ContrastResults = ({ colors }: TContrastResults) => {
+export const ContrastResults = ({ colors }: {colors: TColors[]}) => {
   const { contrastRatio } = useContrast(colors);
   const PERCENTAGE_DARKEN = 50;
+  if(colors.length <2) return null;
+
   return (
     <>
       <h2>Contrast Results</h2>
@@ -22,17 +25,17 @@ export const ContrastResults = ({ colors }: TContrastResults) => {
           <div className={styles.root} key={`${ratio.color1} ${ratio.color2}`}>
             <h2>Contrast Ratio:{ratio.contrast}:1</h2>
             <div className={styles['color-tiles']}>
-              <ColorTile hexString={ratio.color1} rgbArray={ratio.color1rgb} />
-              <ColorTile hexString={ratio.color2} rgbArray={ratio.color2rgb} />
+              {/* <ColorTile hex={ratio.color1} rgb={ratio.color1rgb} />
+              <ColorTile hex={ratio.color2} rgb={ratio.color2rgb} /> */}
               {isContrastGood === false && (
                 <>
                   <ColorTile
-                    hexString={darkendColor1Hex}
-                    rgbArray={darkendColor1}
+                    hex={darkendColor1Hex}
+                    rgb={darkendColor1}
                   />
                   <ColorTile
-                    hexString={darkendColor2Hex}
-                    rgbArray={darkendColor2}
+                    hex={darkendColor2Hex}
+                    rgb={darkendColor2}
                   />
                 </>
               )}
@@ -49,6 +52,3 @@ export const ContrastResults = ({ colors }: TContrastResults) => {
   );
 };
 
-type TContrastResults = {
-  colors: TColors[];
-};

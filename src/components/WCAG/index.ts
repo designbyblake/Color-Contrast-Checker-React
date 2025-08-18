@@ -1,0 +1,1 @@
+export { WCAG } from './WCAG';

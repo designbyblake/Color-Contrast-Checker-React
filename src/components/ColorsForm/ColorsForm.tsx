@@ -1,52 +1,51 @@
 import { useState } from 'react';
+import { ColorTile } from 'src/components/ColorTile';
+import { TextInput } from 'src/components/TextInput';
+import { HEXCHARACTERS } from 'src/constants';
+import { type TColorsForm } from 'src/types/Colors';
 
-import { HEXCHARACTERS } from '../../constants/hexcharacters';
-import { type TColorsForm } from '../../types/Colors';
-import { ColorTile } from '../ColorTile/ColorTile';
-import { TextInput } from '../TextInput/TextInput';
 import styles from './ColorsForm.module.scss';
 
-export const ColorsForm =
-  (
-    { hexString, rgbArray, index,ref, removeColor, updateColor }: TColorsForm
-  ) => {
-    const [color, setColor] = useState<string>(hexString);
+export const ColorsForm = ({
+  hexString,
+  rgbArray,
+  index,
+  removeColor,
+  updateColor,
+  colorInput
+}: TColorsForm) => {
+  const [color, setColor] = useState<string>(hexString);
 
-    return (
-      <div className={styles.root} data-element='color-form'>
-        <ColorTile hexString={hexString} rgbArray={rgbArray} />
-        <TextInput
-          label={`Color ${index + 1}`}
-          maxLength={6}
-          onChange={(event) => {
-            const { value } = event.target;
-            const characters = value.split('');
-            const lastCharacter = characters[characters.length - 1];
+  return (
+    <div className={styles.root} data-element='color-form'>
+      <ColorTile
+        hex={hexString}
+        rgb={rgbArray}
+        updateColor={updateColor}
+        index={index}
+      />
+      <TextInput
+        label={`Color ${index + 1}`}
+        maxLength={6}
+        onChange={(event) => {
+          const { value } = event.target;
 
-            if (!HEXCHARACTERS.includes(lastCharacter?.toUpperCase())) return;
+          if (!HEXCHARACTERS.includes(value.slice(-1)?.toUpperCase())) return;
 
-            setColor(value.toUpperCase());
+          setColor(value.toUpperCase());
 
-            if (value.length === 6) {
-              updateColor(index, value.toUpperCase());
-            }
-          }}
-          value={color}
-          ref={ref}
-          placeholder='CCCCCC'
-        />
-        <input
-          type='color'
-          value={`#${hexString}`}
-          onChange={(e) => {
-            const newColor = e.target.value.replace('#', '').toUpperCase();
-            setColor(newColor);
-            updateColor(index, newColor);
-          }}
-        />
-        <button type='button' onClick={() => removeColor(index)}>
-          Remove Color
-        </button>
-      </div>
-    );
-  }
+          if (value.length === 6) {
+            updateColor(index, value.toUpperCase(), 'text');
+          }
+        }}
+        value={color}
+        ref={colorInput}
+        placeholder='CCCCCC'
+      />
+
+      <button type='button' onClick={() => removeColor(index)}>
+        Remove Color
+      </button>
+    </div>
+  );
+};

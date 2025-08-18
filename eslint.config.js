@@ -25,7 +25,7 @@ export default tseslint.config([
             tseslint.configs.recommended,
             stylistic.configs.recommended,
             reactHooks.configs['recommended-latest'],
-            reactRefresh.configs.vite
+            reactRefresh.configs.vite,
         ],
         rules: {
             'simple-import-sort/imports': 'error',
@@ -46,6 +46,5 @@ export default tseslint.config([
             'json/*': ['error', { allowComments: true }]
         }
     },
-    ...tseslint.configs.recommended,
-    eslintConfigPrettier,
-]);
+    ...tseslint.configs.recommended
+]).concat(eslintConfigPrettier);

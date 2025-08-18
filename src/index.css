@@ -1,3 +1,8 @@
+:root {
+  --color-primary: #f0f;
+  --color-secondary: #000;
+}
+
 body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

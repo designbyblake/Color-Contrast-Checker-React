@@ -1,6 +1,6 @@
 import styles from './Contrast.module.scss';
 
-export const Contrast = ({ color1, color2 }: IContrast) => {
+export const Contrast = ({ color1, color2 }: {color1: string; color2: string;}) => {
   return (
     <div className={styles.root}>
       <div
@@ -40,8 +40,3 @@ export const Contrast = ({ color1, color2 }: IContrast) => {
     </div>
   );
 };
-
-interface IContrast {
-  color1: string;
-  color2: string;
-}

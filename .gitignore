@@ -1,5 +1,5 @@
 coverage/
-
+tsconfig.node.tsbuildinfo
 # Logs
 logs
 *.log

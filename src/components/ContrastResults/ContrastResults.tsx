@@ -6,10 +6,10 @@ import { convertRGBtoHex, darkenRGB } from 'src/utilities/colors';
 import styles from './ContrastResults.module.scss';
 import { useContrast } from './useContrast';
 
-export const ContrastResults = ({ colors }: {colors: TColors[]}) => {
+export const ContrastResults = ({ colors }: { colors: TColors[] }) => {
   const { contrastRatio } = useContrast(colors);
   const PERCENTAGE_DARKEN = 50;
-  if(colors.length <2) return null;
+  if (colors.length < 2) return null;
 
   return (
     <>
@@ -29,14 +29,8 @@ export const ContrastResults = ({ colors }: {colors: TColors[]}) => {
               <ColorTile hex={ratio.color2} rgb={ratio.color2rgb} /> */}
               {isContrastGood === false && (
                 <>
-                  <ColorTile
-                    hex={darkendColor1Hex}
-                    rgb={darkendColor1}
-                  />
-                  <ColorTile
-                    hex={darkendColor2Hex}
-                    rgb={darkendColor2}
-                  />
+                  <ColorTile hex={darkendColor1Hex} rgb={darkendColor1} />
+                  <ColorTile hex={darkendColor2Hex} rgb={darkendColor2} />
                 </>
               )}
             </div>
@@ -51,4 +45,3 @@ export const ContrastResults = ({ colors }: {colors: TColors[]}) => {
     </>
   );
 };
-

@@ -7,7 +7,7 @@ export class Color {
   key?: string;
 
   constructor(hex: string) {
-    this.hex = hex;
+    this.hex = hex.toUpperCase();
     this.rgb = hex ? converteHextoRGB(hex) : [999, 999, 999];
     this.key = `color-${Math.random().toString(16).slice(2)}`;
   }

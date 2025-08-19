@@ -17,14 +17,18 @@ export const ColorTile = ({ hex, rgb, updateColor, index }: TColorTile) => {
           aria-label='Set a color'
           type='color'
           className={styles['color-picker']}
-          value={`#${hex}`}
+          value={color}
           onChange={(e) => {
             const newColor = e.target.value.replace('#', '').toUpperCase();
             updateColor(index, newColor);
           }}
         />
       ) : (
-        <div style={{ backgroundColor: color }} className={styles.block} />
+        <div
+          style={{ backgroundColor: color }}
+          role='presentation'
+          className={styles.block}
+        />
       )}
 
       <div className={styles.label}>{hex ? color : '-'}</div>

@@ -15,7 +15,7 @@ export const ColorsForm = ({
   colorInput,
   hasRemoveColorButton
 }: TColorsForm) => {
-  const [color, setColor] = useState<string>(hexString);
+  const [color, setColor] = useState<string>(hexString.toUpperCase());
 
   return (
     <div className={styles.root} data-element='color-form'>

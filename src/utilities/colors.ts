@@ -5,9 +5,9 @@
  * @returns An array of numbers representing the RGB values: [red, green, blue].
  *
  * @example
- * converteHextoRGB('FFAABB'); // returns [255, 170, 187]
+ * convertHextoRGB('FFAABB'); // returns [255, 170, 187]
  */
-export const converteHextoRGB = (val: string) => {
+export const convertHextoRGB = (val: string) => {
   const rgb = [];
 
   const r = val.slice(0, 2);

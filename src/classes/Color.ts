@@ -1,4 +1,4 @@
-import { converteHextoRGB } from 'src/utilities/colors.js';
+import { convertHextoRGB } from 'src/utilities/colors.js';
 export class Color {
   hex: string;
 
@@ -8,7 +8,7 @@ export class Color {
 
   constructor(hex: string) {
     this.hex = hex.toUpperCase();
-    this.rgb = hex ? converteHextoRGB(hex) : [999, 999, 999];
+    this.rgb = hex ? convertHextoRGB(hex) : [999, 999, 999];
     this.key = `color-${Math.random().toString(16).slice(2)}`;
   }
 }

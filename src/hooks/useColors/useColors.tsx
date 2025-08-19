@@ -3,7 +3,7 @@ import { Color } from 'src/classes/Color';
 import { DEFAULT_COLORS } from 'src/constants';
 import { type TColors, type UpdateColor } from 'src/types/Colors';
 
-import { useColorParams } from './useColorParams/useColorParams';
+import { useColorParams } from '../useColorParams/useColorParams';
 
 export const useColors = () => {
   const { getColorsFromParams, setColorsToParams, removeColorsParams } =

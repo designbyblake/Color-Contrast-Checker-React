@@ -21,13 +21,25 @@ beforeEach(() => {
   getParams.mockReset();
   setParams.mockReset();
   removeParams.mockReset();
+  // @ts-expect-error  Mock window.location to avoid actual URL changes in tests
+  // This is necessary because we are testing URL manipulation
+  // and we don't want to affect the real browser history.
+  delete window.location;
+
+  window.location = {
+    // @ts-expect-error  Mock window.location
+    search: '',
+    pathname: '/test-path'
+  };
+  window.history.replaceState = vi.fn();
 });
 
 describe('useColorParams', () => {
   it('getColorsFromParams returns Color instances from params', () => {
     getParams.mockReturnValue('abc123,def456');
-    const { result } = renderHook(() => useColorParams());
-    const colors = result.current.getColorsFromParams();
+    window.location.search = '?colors=abc123,def456';
+    const { getColorsFromParams } = useColorParams();
+    const colors = getColorsFromParams();
     expect(colors).toHaveLength(2);
     expect(colors[0]).toBeInstanceOf(Color);
     expect(colors[0].hex).toBe('ABC123');
@@ -46,10 +58,12 @@ describe('useColorParams', () => {
 
   it('setColorsToParams sets colors param as uppercase comma-separated string', () => {
     const { result } = renderHook(() => useColorParams());
+
     act(() => {
       result.current.setColorsToParams(['abc123', 'def456']);
     });
-    expect(setParams).toHaveBeenCalledWith('colors', 'ABC123,DEF456');
+    const test = result.current.getColorsFromParams();
+    expect(test).toEqual('ABC123,DEF456');
   });
 
   it('removeColorsParams calls removeParams with correct args', () => {

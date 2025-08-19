@@ -1,7 +1,7 @@
 import { Color } from 'src/classes/Color';
 import { type TColors } from 'src/types/Colors';
 
-import { useQueryParams } from '../useQueryParams';
+import { useQueryParams } from '../useQueryParams/useQueryParams';
 export const useColorParams = () => {
   const { getParams, setParams, removeParams } = useQueryParams();
 

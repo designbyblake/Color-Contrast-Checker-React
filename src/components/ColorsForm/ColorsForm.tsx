@@ -12,7 +12,8 @@ export const ColorsForm = ({
   index,
   removeColor,
   updateColor,
-  colorInput
+  colorInput,
+  hasRemoveColorButton
 }: TColorsForm) => {
   const [color, setColor] = useState<string>(hexString);
 
@@ -35,17 +36,18 @@ export const ColorsForm = ({
           setColor(value.toUpperCase());
 
           if (value.length === 6) {
-            updateColor(index, value.toUpperCase(), 'text');
+            updateColor(index, value.toUpperCase(), true);
           }
         }}
         value={color}
         ref={colorInput}
         placeholder='CCCCCC'
       />
-
-      <button type='button' onClick={() => removeColor(index)}>
-        Remove Color
-      </button>
+      {hasRemoveColorButton && (
+        <button type='button' onClick={() => removeColor(index)}>
+          Remove Color
+        </button>
+      )}
     </div>
   );
 };

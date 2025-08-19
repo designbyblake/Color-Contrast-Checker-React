@@ -4,10 +4,12 @@ import styles from './ColorTiles.module.scss';
 
 export const ColorTiles = ({
   children,
-  addColor
+  addColor,
+  resetColors
 }: {
-    children: ReactNode | ReactNode[];
-    addColor(): void;
+  children: ReactNode | ReactNode[];
+  addColor(): void;
+  resetColors(): void;
 }) => {
   return (
     <div className={styles.root}>
@@ -16,8 +18,10 @@ export const ColorTiles = ({
         <button type='button' onClick={addColor}>
           Add Color
         </button>
+        <button type='button' onClick={resetColors}>
+          Reset Colors
+        </button>
       </div>
     </div>
   );
 };
-

@@ -8,7 +8,7 @@ export type TColors = {
 export type UpdateColor = (
   index: number,
   color: string,
-  type: 'color' | 'text'
+  isText?: boolean
 ) => void;
 
 export type TColorsForm = {
@@ -18,6 +18,7 @@ export type TColorsForm = {
   removeColor(index: number): void;
   updateColor: UpdateColor;
   colorInput: Ref<HTMLInputElement> | undefined;
+  hasRemoveColorButton: boolean;
 };
 
 export type TContrastResults = {

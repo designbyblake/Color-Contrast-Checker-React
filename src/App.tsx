@@ -1,5 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
-import { Color } from 'src/classes/Color';
+import { useEffect } from 'react';
 import {
   ColorsForm,
   ColorTiles,
@@ -8,44 +7,29 @@ import {
   WCAG,
   Wrapper
 } from 'src/components';
-import { DEFAULT_COLORS } from 'src/constants';
-import { type TColors, type UpdateColor } from 'src/types/Colors';
+import { useColors } from 'src/hooks';
 
 export const App = () => {
-  const [colors, setColors] = useState<TColors[]>(DEFAULT_COLORS);
-  const colorInput = useRef<HTMLInputElement>(null);
-  const changedInput = useRef<number>(-1);
-
-  const removeColor = (index: number) => {
-    const theColors = [...colors];
-    theColors.splice(index, 1);
-    setColors(theColors);
-  };
-
-  const updateColor: UpdateColor = (index, color, type) => {
-    const theColors = [...colors];
-    theColors[index] = new Color(color);
-    if (type === 'text') {
-      changedInput.current = index;
-    }
-    setColors(theColors);
-  };
-
-  const addColor = () => {
-    setColors([...colors, new Color('')]);
-    changedInput.current = colors.length;
-  };
+  const {
+    colors,
+    removeColor,
+    updateColor,
+    addColor,
+    resetColors,
+    colorInput,
+    changedInput
+  } = useColors();
 
   useEffect(() => {
     colorInput.current?.focus();
     changedInput.current = -1;
-  }, [colors]);
+  }, [colors, colorInput, changedInput]);
 
   return (
     <>
       <Hero />
       <Wrapper>
-        <ColorTiles addColor={addColor}>
+        <ColorTiles addColor={addColor} resetColors={resetColors}>
           {colors.map((color, index) => (
             <ColorsForm
               hexString={color.hex}
@@ -57,6 +41,7 @@ export const App = () => {
               colorInput={
                 changedInput.current === index ? colorInput : undefined
               }
+              hasRemoveColorButton={colors.length > 2}
             />
           ))}
         </ColorTiles>

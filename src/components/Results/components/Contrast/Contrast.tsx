@@ -1,8 +1,19 @@
 import styles from './Contrast.module.scss';
 
-export const Contrast = ({ color1, color2 }: {color1: string; color2: string;}) => {
+export const Contrast = ({
+  color1,
+  color2
+}: {
+  color1: string;
+  color2: string;
+}) => {
   return (
-    <div className={styles.root}>
+    <div
+      className={styles.root}
+      data-testid='contrast-component'
+      data-color1={color1}
+      data-color2={color2}
+    >
       <div
         className={styles['text-example']}
         style={{

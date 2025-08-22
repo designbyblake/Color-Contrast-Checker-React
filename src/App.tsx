@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 import {
   ColorsForm,
   ColorTiles,
-  ContrastResults,
   Hero,
+  Results,
   WCAG,
   Wrapper
 } from 'src/components';
@@ -29,6 +29,7 @@ export const App = () => {
     <>
       <Hero />
       <Wrapper>
+        <WCAG />
         <ColorTiles addColor={addColor} resetColors={resetColors}>
           {colors.map((color, index) => (
             <ColorsForm
@@ -45,8 +46,8 @@ export const App = () => {
             />
           ))}
         </ColorTiles>
-        <WCAG />
-        <ContrastResults colors={colors} />
+
+        <Results colors={colors} />
       </Wrapper>
     </>
   );

@@ -1,5 +1,6 @@
 import { type ReactNode } from 'react';
 
+import { Button } from '../Button';
 import styles from './ColorTiles.module.scss';
 
 export const ColorTiles = ({
@@ -14,13 +15,13 @@ export const ColorTiles = ({
   return (
     <div className={styles.root}>
       <div className={styles.colors}>{children}</div>
-      <div>
-        <button type='button' onClick={addColor}>
+      <div className={styles.actions}>
+        <Button onClick={addColor} buttonType='primary'>
           Add Color
-        </button>
-        <button type='button' onClick={resetColors}>
+        </Button>
+        <Button type='button' onClick={resetColors} buttonType='secondary'>
           Reset Colors
-        </button>
+        </Button>
       </div>
     </div>
   );

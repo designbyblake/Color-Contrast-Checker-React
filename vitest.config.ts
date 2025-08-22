@@ -17,7 +17,8 @@ export default defineConfig({
         'src/**/*.test.tsx',
         'src/**/*.stories.tsx',
         'src/components/**/index.ts',
-        'src/hooks/**/index.ts'
+        'src/hooks/**/index.ts',
+        'src/vite-env.d.ts'
       ],
       include: ['src/**/*.ts', 'src/**/*.tsx'],
       all: true

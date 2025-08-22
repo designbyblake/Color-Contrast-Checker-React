@@ -1,0 +1,20 @@
+.root {
+  margin: var(--spacing) 0;
+}
+
+.results-group {
+  border-bottom: 2px solid #000;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-medium);
+  margin: var(--spacing-large) 0 0;
+  padding-bottom: var(--spacing-xlarge);
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+}

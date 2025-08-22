@@ -3,7 +3,7 @@ $border-width: 10px;
 
 .root {
   border: $border-width solid #fff;
-  box-shadow: 0 0 7px 2px rgb(101 38 38 / 40%);
+  box-shadow: var(--box-shadow);
   margin-bottom: 20px;
   max-width: #{$size + ($border-width * 2)};
 }

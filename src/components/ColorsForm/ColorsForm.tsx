@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Button } from 'src/components/Button';
 import { ColorTile } from 'src/components/ColorTile';
 import { TextInput } from 'src/components/TextInput';
 import { HEXCHARACTERS } from 'src/constants';
@@ -28,10 +29,23 @@ export const ColorsForm = ({
       <TextInput
         label={`Color ${index + 1}`}
         maxLength={6}
+        onPaste={(event) => {
+          const value = event.clipboardData.getData('text/plain').toUpperCase();
+          const hex = value.startsWith('#') ? value.slice(1) : value;
+          if (hex.length === 6 && hex.match(/^[0-9A-F]+$/i)) {
+            setColor(hex);
+            updateColor(index, hex, true);
+          } else {
+            event.preventDefault();
+          }
+        }}
         onChange={(event) => {
           const { value } = event.target;
-
-          if (!HEXCHARACTERS.includes(value.slice(-1)?.toUpperCase())) return;
+          if (
+            value !== '' &&
+            !HEXCHARACTERS.includes(value.slice(-1)?.toUpperCase())
+          )
+            return;
 
           setColor(value.toUpperCase());
 
@@ -44,9 +58,13 @@ export const ColorsForm = ({
         placeholder='CCCCCC'
       />
       {hasRemoveColorButton && (
-        <button type='button' onClick={() => removeColor(index)}>
+        <Button
+          type='button'
+          buttonSize='small'
+          onClick={() => removeColor(index)}
+        >
           Remove Color
-        </button>
+        </Button>
       )}
     </div>
   );

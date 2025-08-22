@@ -1,3 +1,7 @@
+.root {
+  font-size: 1rem;
+}
+
 .colors {
   display: flex;
   flex-wrap: wrap;
@@ -5,4 +9,12 @@
   [data-element='color-form'] {
     flex: 0 1 170px;
   }
+}
+
+.actions {
+  display: flex;
+  flex: 0 1 100%;
+  font-size: 0.625rem;
+  gap: 20px;
+  padding: var(--spacing) 0 var(--spacing-small);
 }

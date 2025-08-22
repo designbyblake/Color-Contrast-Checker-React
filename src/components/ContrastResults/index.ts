@@ -1,1 +1,0 @@
-export { ContrastResults } from './ContrastResults';

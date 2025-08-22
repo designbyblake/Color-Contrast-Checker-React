@@ -11,7 +11,12 @@ export const ColorTile = ({ hex, rgb, updateColor, index }: TColorTile) => {
   }, [rgb]);
 
   return (
-    <div className={styles.root} data-element='color-tile'>
+    <div
+      className={styles.root}
+      data-element='color-tile'
+      data-testid='color-tile'
+      data-hex={hex}
+    >
       {updateColor && typeof index === 'number' ? (
         <input
           aria-label='Set a color'

@@ -1,0 +1,41 @@
+.root {
+  border-spacing: 0;
+  font-size: 0.625rem;
+
+  caption {
+    font-size: 2.4em;
+    margin-bottom: 0.4em;
+    text-align: left;
+  }
+
+  th,
+  td {
+    font-size: 2em;
+    padding: var(--spacing-small) var(--spacing-large);
+    text-align: left;
+  }
+
+  thead {
+    th {
+      background: #000;
+      color: #fff;
+      font-size: 2.4em;
+    }
+  }
+
+  tbody {
+    tr {
+      th,
+      td {
+        border-bottom: 2px solid #000;
+      }
+
+      &:last-of-type {
+        th,
+        td {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+}

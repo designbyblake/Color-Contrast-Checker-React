@@ -1,40 +1,40 @@
 import {
-  AriaAttributes,
-  ChangeEvent,
-  forwardRef,
-  InputHTMLAttributes,
-  ReactElement} from 'react';
+  type AriaAttributes,
+  type ChangeEvent,
+  type InputHTMLAttributes,
+  type Ref
+} from 'react';
 
 import styles from './TextInput.module.scss';
 
-export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
-  ({ label, error, onChange, ...props }: TextInputProps, ref): ReactElement => {
-    return (
-      <div className={styles.root}>
-        <label>
-          <span className={styles.label}>{label}</span>
-          <input
-            className={styles.input}
-            type='text'
-            ref={ref}
-            onChange={(event) => onChange?.(event)}
-            {...props}
-          />
-          {error && <span className={styles.error}>{error}</span>}
-        </label>
-      </div>
-    );
-  }
-);
-TextInput.displayName = 'TextInput';
+export const TextInput = ({
+  label,
+  error,
+  onChange,
+  ref,
+  ...props
+}: TextInputProps) => {
+  return (
+    <div className={styles.root}>
+      <label>
+        <span className={styles.label}>{label}</span>
+        <input
+          className={styles.input}
+          type='text'
+          ref={ref}
+          onChange={(event) => onChange?.(event)}
+          {...props}
+        />
+        {error && <span className={styles.error}>{error}</span>}
+      </label>
+    </div>
+  );
+};
 
-interface TextInputProps
-  extends AriaAttributes,
-    InputHTMLAttributes<HTMLInputElement> {
-  label: string;
-  error?: string | boolean | undefined;
-  /**
-   * onChange callback
-   */
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
-}
+export type TextInputProps = AriaAttributes &
+  InputHTMLAttributes<HTMLInputElement> & {
+    label: string;
+    error?: string | boolean | undefined;
+    ref: Ref<HTMLInputElement | null> | undefined;
+    onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  };

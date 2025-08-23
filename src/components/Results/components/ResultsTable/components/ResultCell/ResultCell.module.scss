@@ -1,0 +1,21 @@
+.result {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+}
+
+.result-text {
+  margin-left: 8px;
+}
+
+.icon {
+  font-size: 1.4em;
+}
+
+.pass {
+  color: var(--color-success);
+}
+
+.fail {
+  color: var(--color-error);
+}

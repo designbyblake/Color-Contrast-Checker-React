@@ -1,3 +1,16 @@
+:root {
+  --color-primary: #f0f;
+  --color-secondary: #000;
+  --color-success: #28a745;
+  --color-error: #dc3545;
+  --box-shadow: 0 0 7px 2px rgb(101 38 38 / 40%);
+  --spacing: 50px;
+  --spacing-small: 10px;
+  --spacing-medium: 20px;
+  --spacing-large: 30px;
+  --spacing-xlarge: 100px;
+}
+
 body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

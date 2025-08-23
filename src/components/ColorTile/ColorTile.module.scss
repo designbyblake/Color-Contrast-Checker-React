@@ -3,20 +3,38 @@ $border-width: 10px;
 
 .root {
   border: $border-width solid #fff;
-  box-shadow: 0 0 7px 2px rgb(101 38 38 / 40%);
+  box-shadow: var(--box-shadow);
   margin-bottom: 20px;
   max-width: #{$size + ($border-width * 2)};
 }
 
-.block {
+.block,
+.color-picker {
   background-color: #ccc;
   height: $size;
   width: $size;
+}
+
+.color-picker {
+  border: none;
+  cursor: pointer;
+  display: block;
+  padding: 0;
+  width: $size;
+
+  &::-webkit-color-swatch-wrapper {
+    padding: 0;
+  }
+
+  &::-webkit-color-swatch {
+    border: none;
+    border-radius: 0;
+  }
 }
 
 .label {
   display: block;
   font-weight: bold;
   margin: 0;
-  padding: 5px 0 10px;
+  margin: 5px 0;
 }

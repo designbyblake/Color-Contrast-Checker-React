@@ -25,6 +25,7 @@ vi.mock('src/components/TextInput', () => ({
       value={props.value}
       placeholder={props.placeholder}
       onChange={props.onChange}
+      onPaste={props.onPaste}
       aria-label={props.label}
       maxLength={props.maxLength}
       ref={props.ref}
@@ -32,17 +33,17 @@ vi.mock('src/components/TextInput', () => ({
   )
 }));
 
-describe('ColorsForm', () => {
-  const baseProps = {
-    hexString: 'FFAA00',
-    rgbArray: [255, 170, 0] as [number, number, number],
-    index: 0,
-    removeColor: vi.fn(),
-    updateColor: vi.fn(),
-    colorInput: { current: null },
-    hasRemoveColorButton: false
-  };
+const baseProps = {
+  hexString: 'FFAA00',
+  rgbArray: [255, 170, 0] as [number, number, number],
+  index: 0,
+  removeColor: vi.fn(),
+  updateColor: vi.fn(),
+  colorInput: { current: null },
+  hasRemoveColorButton: false
+};
 
+describe('ColorsForm', () => {
   it('renders ColorTile and TextInput', () => {
     render(<ColorsForm {...baseProps} />);
     expect(screen.getByTestId('color-tile-mock')).toBeInTheDocument();
@@ -90,5 +91,56 @@ describe('ColorsForm', () => {
     const button = screen.getByRole('button', { name: /remove color/i });
     fireEvent.click(button);
     expect(removeColor).toHaveBeenCalledWith(0);
+  });
+});
+
+describe('paste handling', () => {
+  it('handles paste with valid hex code', () => {
+    const updateColor = vi.fn();
+    render(<ColorsForm {...baseProps} updateColor={updateColor} />);
+    const input = screen.getByTestId('text-input-mock');
+
+    const mockClipboardEvent = {
+      clipboardData: {
+        getData: vi.fn().mockReturnValue('AABBCC')
+      }
+    };
+
+    fireEvent.paste(input, mockClipboardEvent);
+
+    expect(mockClipboardEvent.clipboardData.getData).toHaveBeenCalledWith(
+      'text/plain'
+    );
+    expect(input).toHaveValue('AABBCC');
+    expect(updateColor).toHaveBeenCalledWith(0, 'AABBCC', true);
+  });
+
+  it('handles paste with valid hex code including #', () => {
+    const updateColor = vi.fn();
+    render(<ColorsForm {...baseProps} updateColor={updateColor} />);
+    const input = screen.getByTestId('text-input-mock');
+
+    const mockClipboardEvent = {
+      clipboardData: {
+        getData: vi.fn().mockReturnValue('#AABBCC')
+      }
+    };
+
+    fireEvent.paste(input, mockClipboardEvent);
+
+    expect(mockClipboardEvent.clipboardData.getData).toHaveBeenCalledWith(
+      'text/plain'
+    );
+    expect(input).toHaveValue('AABBCC');
+    expect(updateColor).toHaveBeenCalledWith(0, 'AABBCC', true);
+  });
+
+  it('maintains current value when invalid character is entered', () => {
+    render(<ColorsForm {...baseProps} />);
+    const input = screen.getByTestId('text-input-mock');
+    const initialValue = 'FFAA00';
+
+    fireEvent.change(input, { target: { value: initialValue + 'Z' } });
+    expect(input).toHaveValue(initialValue);
   });
 });

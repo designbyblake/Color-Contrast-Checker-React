@@ -30,14 +30,20 @@ export const ColorsForm = ({
         label={`Color ${index + 1}`}
         maxLength={6}
         onPaste={(event) => {
-          const value = event.clipboardData.getData('text/plain').toUpperCase();
-          const hex = value.startsWith('#') ? value.slice(1) : value;
-          if (hex.length === 6 && hex.match(/^[0-9A-F]+$/i)) {
-            setColor(hex);
-            updateColor(index, hex, true);
-          } else {
+          const pastedText = event.clipboardData
+            .getData('text/plain')
+            .toUpperCase();
+          const hex = pastedText.startsWith('#')
+            ? pastedText.slice(1)
+            : pastedText;
+
+          if (!hex.match(/^[0-9A-F]{6}$/i)) {
             event.preventDefault();
+            return;
           }
+
+          setColor(hex);
+          updateColor(index, hex, true);
         }}
         onChange={(event) => {
           const { value } = event.target;

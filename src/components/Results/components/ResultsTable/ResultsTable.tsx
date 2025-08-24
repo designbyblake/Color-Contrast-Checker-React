@@ -1,10 +1,12 @@
+import { AA_CONTRAST, AAA_CONTRAST, UI_CONTRAST } from 'src/constants';
+
 import { ResultCell } from './components/ResultCell';
 import styles from './ResultsTable.module.scss';
 
 export const ResultsTable = ({ contrast }: { contrast: number }) => {
-  const isContrast3to1 = <ResultCell didPass={contrast >= 3} />;
-  const isContrast4to5to1 = <ResultCell didPass={contrast >= 4.5} />;
-  const isContrast7to1 = <ResultCell didPass={contrast >= 7} />;
+  const isContrast3to1 = <ResultCell didPass={contrast >= UI_CONTRAST} />;
+  const isContrast4to5to1 = <ResultCell didPass={contrast >= AA_CONTRAST} />;
+  const isContrast7to1 = <ResultCell didPass={contrast >= AAA_CONTRAST} />;
 
   return (
     <table

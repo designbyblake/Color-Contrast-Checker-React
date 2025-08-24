@@ -1,4 +1,4 @@
-import { type TColors } from 'src/types/Colors';
+import { type ColorsType } from 'src/types/Colors';
 export const HEXCHARACTERS = [
   '0',
   '1',
@@ -19,7 +19,7 @@ export const HEXCHARACTERS = [
   undefined
 ];
 
-export const DEFAULT_COLORS: TColors[] = [
+export const DEFAULT_COLORS: ColorsType[] = [
   {
     hex: 'FF00FF',
     rgb: [255, 0, 255],
@@ -31,3 +31,7 @@ export const DEFAULT_COLORS: TColors[] = [
     key: 'default-2'
   }
 ];
+
+export const UI_CONTRAST = 3;
+export const AA_CONTRAST = 4.5;
+export const AAA_CONTRAST = 7;

@@ -70,8 +70,12 @@ export const displayRGB = (rgb: number[]): string => {
  * @returns Array of [r, g, b] values lightened
  */
 export const lightenRGB = (rgb: number[], percent: number): number[] => {
-  const factor = 1 + percent / 100;
-  return rgb.map((v) => Math.min(255, Math.round(v * factor)));
+  if (percent <= 0) {
+    throw new Error('Percent must be greater than 0 to lighten the color.');
+  }
+  return rgb.map((v) =>
+    Math.min(255, Math.round(v + ((255 - v) * percent) / 100))
+  );
 };
 
 /**
@@ -109,11 +113,11 @@ export const luminance = (r: number, g: number, b: number): number => {
  * @param rgb2 - Array of [r, g, b] values for the second color (0-255)
  * @returns Contrast ratio as a string rounded to two decimals (e.g., '4.50')
  */
-export const contrast = (rgb1: number[], rgb2: number[]): string => {
+export const contrast = (rgb1: number[], rgb2: number[]): number => {
   const lum1 = luminance(rgb1[0], rgb1[1], rgb1[2]);
   const lum2 = luminance(rgb2[0], rgb2[1], rgb2[2]);
   const brightest = Math.max(lum1, lum2);
   const darkest = Math.min(lum1, lum2);
   const num = (brightest + 0.05) / (darkest + 0.05);
-  return num.toFixed(2);
+  return parseFloat(num.toFixed(2));
 };

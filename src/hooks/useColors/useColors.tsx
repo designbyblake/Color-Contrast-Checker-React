@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import { Color } from 'src/classes/Color';
 import { DEFAULT_COLORS } from 'src/constants';
-import { type TColors, type UpdateColor } from 'src/types/Colors';
+import { type ColorsType, type UpdateColorType } from 'src/types/Colors';
 
 import { useColorParams } from '../useColorParams/useColorParams';
 
@@ -11,7 +11,8 @@ export const useColors = () => {
   const colorFromParams = getColorsFromParams();
   const initialColors =
     colorFromParams.length > 0 ? colorFromParams : DEFAULT_COLORS;
-  const [colors, setColors] = useState<TColors[]>(initialColors);
+
+  const [colors, setColors] = useState<ColorsType[]>(initialColors);
   const colorInput = useRef<HTMLInputElement>(null);
   const changedInput = useRef<number>(-1);
 
@@ -21,7 +22,7 @@ export const useColors = () => {
     setColors(theColors);
   };
 
-  const updateColor: UpdateColor = (index, color, isText) => {
+  const updateColor: UpdateColorType = (index, color, isText) => {
     const theColors = [...colors];
     theColors[index] = new Color(color);
     if (isText) {

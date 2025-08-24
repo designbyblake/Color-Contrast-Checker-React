@@ -1,11 +1,11 @@
 import { Color } from 'src/classes/Color';
-import { type TColors } from 'src/types/Colors';
+import { type ColorsType } from 'src/types/Colors';
 
 import { useQueryParams } from '../useQueryParams/useQueryParams';
 export const useColorParams = () => {
   const { getParams, setParams, removeParams } = useQueryParams();
 
-  const getColorsFromParams = (): TColors[] => {
+  const getColorsFromParams = (): ColorsType[] => {
     const colorsParam = getParams('colors');
     if (colorsParam) {
       const colors = colorsParam.split(',').map((color) => {

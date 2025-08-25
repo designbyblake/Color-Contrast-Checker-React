@@ -1,5 +1,5 @@
-import { ColorTile } from 'src/components/ColorTile';
-import { ResultsTable } from 'src/components/Results/components/ResultsTable';
+import { ColorTiles, ResultsTable } from 'src/components/Results/components';
+import { type TilesAndTableType } from 'src/types/Colors';
 
 import styles from './TilesAndTable.module.scss';
 export const TilesAndTable = ({
@@ -8,26 +8,15 @@ export const TilesAndTable = ({
   rgb1,
   rgb2,
   contrastRatio
-}: TilesAndTableProps) => {
+}: TilesAndTableType) => {
   return (
     <div className={styles.root}>
       <div className={styles['section-colors']}>
-        <div className={styles['color-tiles']}>
-          <ColorTile hex={hex1} rgb={rgb1} />
-          <ColorTile hex={hex2} rgb={rgb2} />
-        </div>
+        <ColorTiles hex1={hex1} rgb1={rgb1} hex2={hex2} rgb2={rgb2} />
       </div>
       <div className={styles.section}>
-        <ResultsTable contrast={parseFloat(contrastRatio)} />
+        <ResultsTable contrast={contrastRatio} />
       </div>
     </div>
   );
-};
-
-type TilesAndTableProps = {
-  hex1: string;
-  hex2: string;
-  rgb1: number[];
-  rgb2: number[];
-  contrastRatio: string;
 };

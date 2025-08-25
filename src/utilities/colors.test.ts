@@ -55,18 +55,6 @@ describe('displayRGB', () => {
   });
 });
 
-describe('lightenRGB', () => {
-  it('lightens RGB values by percentage', () => {
-    expect(lightenRGB([100, 100, 100], 10)).toEqual([110, 110, 110]);
-    expect(lightenRGB([200, 200, 200], 50)).toEqual([255, 255, 255]);
-    expect(lightenRGB([0, 0, 0], 100)).toEqual([0, 0, 0]);
-    expect(lightenRGB([128, 128, 128], 100)).toEqual([255, 255, 255]);
-  });
-  it('does not exceed 255', () => {
-    expect(lightenRGB([250, 250, 250], 10)).toEqual([255, 255, 255]);
-  });
-});
-
 describe('darkenRGB', () => {
   it('darkens RGB values by percentage', () => {
     expect(darkenRGB([100, 100, 100], 10)).toEqual([90, 90, 90]);
@@ -95,10 +83,24 @@ describe('luminance', () => {
 
 describe('contrast', () => {
   it('calculates contrast ratio between black and white', () => {
-    expect(contrast([0, 0, 0], [255, 255, 255])).toBe('21.00');
-    expect(contrast([255, 255, 255], [0, 0, 0])).toBe('21.00');
+    expect(contrast([0, 0, 0], [255, 255, 255])).toBe(21.0);
+    expect(contrast([255, 255, 255], [0, 0, 0])).toBe(21.0);
   });
   it('calculates contrast ratio between similar colors', () => {
     expect(contrast([128, 128, 128], [130, 130, 130])).toBeCloseTo(1.03, 2);
+  });
+});
+
+describe('lightenRGB', () => {
+  it('lightens RGB values by percentage', () => {
+    expect(lightenRGB([100, 100, 100], 10)).toEqual([115, 115, 115]);
+    expect(lightenRGB([200, 200, 200], 50)).toEqual([227, 227, 227]);
+    expect(lightenRGB([0, 0, 0], 100)).toEqual([255, 255, 255]);
+    expect(lightenRGB([128, 128, 128], 100)).toEqual([255, 255, 255]);
+  });
+
+  it('throws error if percent is 0 or negative', () => {
+    expect(() => lightenRGB([100, 100, 100], 0)).toThrow();
+    expect(() => lightenRGB([100, 100, 100], -10)).toThrow();
   });
 });

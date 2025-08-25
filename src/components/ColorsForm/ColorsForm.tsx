@@ -3,7 +3,7 @@ import { Button } from 'src/components/Button';
 import { ColorTile } from 'src/components/ColorTile';
 import { TextInput } from 'src/components/TextInput';
 import { HEXCHARACTERS } from 'src/constants';
-import { type TColorsForm } from 'src/types/Colors';
+import { type ColorsFormType } from 'src/types/Colors';
 
 import styles from './ColorsForm.module.scss';
 
@@ -15,7 +15,7 @@ export const ColorsForm = ({
   updateColor,
   colorInput,
   hasRemoveColorButton
-}: TColorsForm) => {
+}: ColorsFormType) => {
   const [color, setColor] = useState<string>(hexString.toUpperCase());
 
   return (

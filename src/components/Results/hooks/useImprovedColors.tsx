@@ -47,12 +47,14 @@ export const useImprovedColors = () => {
       });
     }
     if (updatedColors.length === 0) {
+      console.log(contrast(both.rgb1, both.rgb2));
       if (contrast(both.rgb1, both.rgb2) >= type) {
         updatedColors.push({
           ...both,
           contrastRatio: contrast(both.rgb1, both.rgb2)
         });
       }
+
       if (contrast(both2.rgb1, both2.rgb2) >= type) {
         updatedColors.push({
           ...both2,

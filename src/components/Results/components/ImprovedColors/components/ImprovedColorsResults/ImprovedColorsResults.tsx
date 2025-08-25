@@ -2,7 +2,7 @@ import { Button } from 'src/components/Button';
 import { ColorTiles } from 'src/components/Results/components/ColorTiles';
 import { type ImprovedColorsResultsType } from 'src/types/Colors';
 
-import styles from './ImprovedColors.Results.module.scss';
+import styles from './ImprovedColorsResults.module.scss';
 
 export const ImprovedColorsResults = ({
   title,

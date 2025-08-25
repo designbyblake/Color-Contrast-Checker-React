@@ -73,9 +73,14 @@ export const lightenRGB = (rgb: number[], percent: number): number[] => {
   if (percent <= 0) {
     throw new Error('Percent must be greater than 0 to lighten the color.');
   }
-  return rgb.map((v) =>
-    Math.min(255, Math.round(v + ((255 - v) * percent) / 100))
-  );
+  return rgb.map((v) => {
+    const number = v + ((255 - v) * percent) / 100;
+
+    if (number - Math.round(number) === -0.5) {
+      return Math.min(255, Math.floor(number));
+    }
+    return Math.min(255, Math.round(number));
+  });
 };
 
 /**

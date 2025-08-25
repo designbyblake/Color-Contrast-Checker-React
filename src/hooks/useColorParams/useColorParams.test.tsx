@@ -12,7 +12,7 @@ describe('useColorParams', () => {
     const { result } = renderHook(() => useColorParams());
 
     // Simulate behavior of getColorsFromParams with no params
-    const colors = result.current.getColorsFromParams([]);
+    const colors = result.current.getColorsFromParams();
 
     expect(colors).toEqual([]);
   });
@@ -29,7 +29,7 @@ describe('useColorParams', () => {
     });
 
     // Verify that the colors were removed
-    const colors = result.current.getColorsFromParams([]);
+    const colors = result.current.getColorsFromParams();
     expect(colors).toEqual([]);
   });
 });
